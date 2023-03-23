@@ -33,6 +33,12 @@ class LinkedList:
             item = item.next
         item.next = None
 
+    def Reverse(self) -> None:
+        prev = None
+        item = self.head
+        while item is not None:
+            item.next, prev, item = prev, item, item.next
+        self.head = prev
 
 llist = LinkedList()
 llist.head = Node(1)
@@ -46,5 +52,5 @@ llist.PrintList()
 llist.AddFirst(Node(5))
 llist.AddEnd(Node(6))
 llist.PrintList()
-llist.RemoveEnd()
+llist.Reverse()
 llist.PrintList()
