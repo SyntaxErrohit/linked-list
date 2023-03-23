@@ -20,15 +20,18 @@ class LinkedList:
     
     def AddEnd(self, node) -> None:
         item = self.head
-        if item is None:
-            item = node
-            return None
         while item.next is not None:
             item = item.next
         item.next = node
     
     def RemoveFirst(self) -> None:
         self.head = self.head.next
+    
+    def RemoveEnd(self) -> None:
+        item = self.head
+        while item.next.next is not None:
+            item = item.next
+        item.next = None
 
 
 llist = LinkedList()
@@ -43,5 +46,5 @@ llist.PrintList()
 llist.AddFirst(Node(5))
 llist.AddEnd(Node(6))
 llist.PrintList()
-llist.RemoveFirst()
+llist.RemoveEnd()
 llist.PrintList()
