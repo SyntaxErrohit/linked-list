@@ -39,6 +39,9 @@ class LinkedList:
         while item is not None:
             item.next, prev, item = prev, item, item.next
         self.head = prev
+    
+def summ(list1, list2):
+    s = LinkedList
 
 llist = LinkedList()
 llist.head = Node(1)
@@ -52,5 +55,4 @@ llist.PrintList()
 llist.AddFirst(Node(5))
 llist.AddEnd(Node(6))
 llist.PrintList()
-llist.Reverse()
-llist.PrintList()
+llist.num()
