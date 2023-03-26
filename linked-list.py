@@ -41,8 +41,19 @@ class LinkedList:
         self.head = prev
     
 def summ(list1, list2):
-    s = LinkedList
+    item1 = list1.head
+    item2 = list2.head
+    s = LinkedList()
+    node = Node(item1.val + item2.val)
+    s.head = node
+    item1, item2 = item1.next, item2.next
+    while item1 is not None and item2 is not None:
+        node.next = Node(item1.val+item2.val)
+        node = node.next
+        item1, item2 = item1.next, item2.next
+    s.PrintList()
 
+"""
 llist = LinkedList()
 llist.head = Node(1)
 e2 = Node(2)
@@ -56,3 +67,20 @@ llist.AddFirst(Node(5))
 llist.AddEnd(Node(6))
 llist.PrintList()
 llist.num()
+"""
+
+l1 = LinkedList()
+l1.head = Node(2)
+a2 = Node(4)
+a3 = Node(3)
+l1.head.next = a2
+a2.next = a3
+
+l2 = LinkedList()
+l2.head = Node(5)
+b2 = Node(6)
+b3 = Node(4)
+l2.head.next = b2
+b2.next = b3
+
+summ(l1, l2)
