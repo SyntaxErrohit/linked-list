@@ -23,20 +23,11 @@ def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
         l1, l2 = l1.next, l2.next
         node = s
         while l1 is not None or l2 is not None:
-            if l1 is None:
-                n1 = 0
-            else:
-                n1 = l1.val
-                l1 = l1.next
-
-            if l2 is None:
-                n2 = 0
-            else:
-                n2 = l2.val
-                l2 = l2.next
-
-            node.next = ListNode((n1 + n2 + c)%10)
-            c = (n1 + n2 + c)//10
+            n1, l1 = (0, l1) if l1 is None else (l1.val, l1.next)
+            n2, l2 = (0, l2) if l2 is None else (l2.val, l2.next)
+            summ = n1 + n2 + c
+            c = summ//10
+            node.next = ListNode(summ%10)
             node = node.next
         if c:
             node.next = ListNode(c)
