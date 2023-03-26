@@ -10,17 +10,16 @@ class ListNode:
             self = self.next
         return s + "None"
 
-def MakeListNode(l):
-    node = ListNode(l.pop())
-    for i in l:
-        n = ListNode(i)
-        n.next = node
-        node = n
+def MakeListNode(ListOfNumbers: list[int]) -> ListNode:
+    node = ListNode(ListOfNumbers.pop())
+    for elem in ListOfNumbers:
+        n = ListNode(elem)
+        n.next, node = node, n
     return node
 
 def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
         s = ListNode((l1.val + l2.val)%10)
-        n = (l1.val + l2.val)//10
+        c = (l1.val + l2.val)//10
         l1, l2 = l1.next, l2.next
         node = s
         while l1 is not None or l2 is not None:
@@ -36,11 +35,11 @@ def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
                 n2 = l2.val
                 l2 = l2.next
 
-            node.next = ListNode((n1 + n2 + n)%10)
-            n = (n1 + n2 + n)//10
+            node.next = ListNode((n1 + n2 + c)%10)
+            c = (n1 + n2 + c)//10
             node = node.next
-        if n:
-            node.next = ListNode(n)
+        if c:
+            node.next = ListNode(c)
         return s
 
 l1 = MakeListNode([9, 9, 9, 9, 9, 9])
